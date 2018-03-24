@@ -1,0 +1,18 @@
+.styleguide-container {
+  padding: 20px;
+}
+
+.styleguide-configurator {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 350px;
+
+  max-height: 80vh;
+  overflow-y: scroll;
+
+  background: #fff;
+
+  padding: 10px;
+  border: 1px solid #ccc;
+}

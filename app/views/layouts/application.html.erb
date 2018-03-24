@@ -6,9 +6,54 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'empty', media: 'all', 'data-turbolinks-track': 'reload', 'data-source-tag': true %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="styleguide-configurator" role="configurator">
+      <div class="app-title">Bootstrap Configurator</div>
+      <%= form_for :variables, url: '#', method: :get do |f| %>
+        <fieldset>
+          <legend>Colours</legend>
+          <% [:primary, :secondary, :success, :info, :warning, :danger, :light, :dark, 'link-color'].each do |color| %>
+            <%= f.label color %>: 
+            <%= f.text_field color, type: 'color', value: '#000000', 'data-value-src': "--#{color}" %><br />
+          <% end %>
+        </fieldset>
+
+        <fieldset>
+          <legend>Fonts</legend>
+
+          <%= f.label 'font-size-base' %>: 
+          <%= f.select 'font-size-base', [
+            '0.5rem',
+            '0.75rem',
+            '1rem',
+            '1.25rem',
+            '1.5rem'
+          ] %><br />
+
+          <%= f.label 'font-family-sans-serif' %>: 
+          <%= f.select 'font-family-sans-serif', [
+            '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+            'Arial, Helvetica, sans-serif',
+            '"Arial Black", Gadget, sans-serif',
+            '"Comic Sans MS", cursive, sans-serif',
+            'Impact, Charcoal, sans-serif',
+            '"Lucida Sans Unicode", "Lucida Grande", sans-serif'
+          ] %><br />
+
+          <%= f.label 'font-family-monospace' %>: 
+          <%= f.select 'font-family-monospace', [
+            'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+            '"Courier New", Courier, monospace',
+            '"Lucida Console", Monaco, monospace'
+          ] %>
+        </fieldset>
+      <% end %>
+    </div>
+    <div class="styleguide-container" role="main">
+      <%= yield %>
+    </div>
   </body>
 </html>
