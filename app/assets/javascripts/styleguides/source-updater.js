@@ -1,11 +1,16 @@
-document.addEventListener("DOMContentLoaded", function(event) { 
+$(document).ready(function(){
   var sourceUrl = document.querySelector('[data-source-src]').dataset['sourceSrc'];
   var sourceElm = document.querySelector('[data-source-tag]');
 
   replaceCssSource(sourceElm, sourceUrl, function(){
     configColourInputs();
-    listenForConfiguratorChanges();
   });
+  listenForConfiguratorChanges();
+});
+
+$(document).on('turbolinks:load', function(){
+  configColourInputs();
+  listenForConfiguratorChanges();
 });
 
 function replaceCssSource(oldEm, url, callback=function(){}){

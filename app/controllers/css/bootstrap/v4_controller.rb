@@ -2,6 +2,7 @@ class Css::Bootstrap::V4Controller < ApplicationController
   before_action -> { respond_to :css }
 
   def show
+    session['bootstrap-vs-source'] = request.fullpath
     respond_to do |format|
       format.css do
         render_scss('node_modules/bootstrap/scss/bootstrap.scss')

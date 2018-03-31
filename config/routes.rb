@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :styleguides do
     namespace :bootstrap, path: 'bootstrap' do
       resource :v4, path: '4', controller: 'v4', only: [:show] do
-        get '/:action'
+        get '/:action', as: :page
       end
     end
   end

@@ -3,10 +3,11 @@
   <head>
     <title>BootstrapConfigurator</title>
     <%= csrf_meta_tags %>
+    <meta name="turbolinks-cache-control" content="no-cache">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    css_source_path, media: 'all', 'data-turbolinks-track': 'reload', 'data-source-tag': true %>
+    <%= stylesheet_link_tag    css_source_path, media: 'all', 'data-source-tag': true %>
   </head>
 
   <body>
@@ -14,13 +15,13 @@
       <div class="app-title">Bootstrap Configurator</div>
     </div>
     <div class="styleguide-wrapper">
-      <div class="styleguide-navigation" role="nav">
+      <div class="styleguide-navigation" id="styleguide-navigation" role="nav" data-turbolinks-permanent>
         <%= render 'navigation' %>
       </div>
       <div class="styleguide-container" role="main">
         <%= yield %>
       </div>
-      <div class="styleguide-configurator" role="configurator">
+      <div class="styleguide-configurator" id="styleguide-configurator" role="configurator" data-turbolinks-permanent>
         <%= render 'configurator' %>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <%= form_for :variables, url: '#', method: :get, html: { 'data-source-src': css_generator_path } do |f| %>
   <fieldset>
     <legend>Colours</legend>
-    <% [:primary, :secondary, :success, :info, :warning, :danger, :light, :dark, 'link-color'].each do |color| %>
+    <% [:primary, :secondary, :success, :info, :warning, :danger, :light, :dark].each do |color| %>
       <%= f.label color %>: 
       <%= f.text_field color, type: 'color', value: '#000000', 'data-value-src': "--#{color}" %><br />
     <% end %>
