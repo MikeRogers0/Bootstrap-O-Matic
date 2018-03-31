@@ -7,7 +7,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    css_source_url, media: 'all', 'data-source-tag': true %>
+    <% unless params[:skip] == 'css' %>
+      <%= stylesheet_link_tag    css_source_url, media: 'all', 'data-source-tag': true %>
+    <% end %>
   </head>
 
   <body>

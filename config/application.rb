@@ -21,5 +21,36 @@ module BootstrapConfigurator
       g.helper false
       g.view_specs false
     end
+
+    if ENV['MEMCACHEDCLOUD_SERVERS']
+      config.cache_store = :dalli_store,
+                           (ENV['MEMCACHEDCLOUD_SERVERS'] || '').split(','),
+                           { username: ENV['MEMCACHEDCLOUD_USERNAME'],
+                             password: ENV['MEMCACHEDCLOUD_PASSWORD'],
+                             failover: true,
+                             socket_timeout: 1.5,
+                             socket_failure_delay: 0.2,
+                             down_retry_delay: 60 }
+    end
+
+    # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+    if ENV['ASSET_HOST']
+      config.action_controller.asset_host = ENV['ASSET_HOST']
+      config.action_mailer.asset_host = ENV['ASSET_HOST']
+    end
+
+    #config.active_job.queue_adapter = :sidekiq
+
+    config.redis = { url: ENV['REDIS_URL'], size: 1 } if ENV['REDIS_URL']
+
+    config.i18n.load_path += Dir["#{Rails.root}/config/locales/**/*.{rb,yml}"]
+
+    #config.middleware.use Rack::Attack
+
+    config.action_dispatch.default_headers.merge!({
+      'Content-Security-Policy' => ENV.fetch('CONTENT_SECURITY_POLICY') { '' },
+      'Referrer-Policy' => 'no-referrer-when-downgrade'
+    })
+    
   end
 end
