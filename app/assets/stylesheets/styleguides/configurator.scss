@@ -1,18 +1,38 @@
+.styleguide-title {
+  padding: 20px;
+  text-align: center;
+}
+
+.styleguide-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+
+.styleguide-navigation {
+  flex: 0 0 15%;
+  max-width: 15%;
+  padding: 20px;
+}
+
 .styleguide-container {
+  flex: 0 0 60%;
+  max-width: 60%;
   padding: 20px;
 }
 
 .styleguide-configurator {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 350px;
+  padding: 20px;
+  flex: 0 0 25%;
+  max-width: 25%;
+  position: relative;
 
-  max-height: 80vh;
-  overflow-y: scroll;
-
-  background: #fff;
-
-  padding: 10px;
-  border: 1px solid #ccc;
+  form {
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    position: sticky;
+    top: 10px;
+  }
 }

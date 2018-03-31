@@ -9,6 +9,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 function replaceCssSource(oldEm, url, callback=function(){}){
+  // Sometimes the URL is flicking back and forth, just just add the listner
+  // again
+  if( url == oldEm.attributes['href'].value ) {
+    oldEm.addEventListener("load", function(){
+      callback();
+    });
+    return;
+  }
+
   // create a new html element
   var cssElement = oldEm.cloneNode();
   var _oldElm = oldEm;
