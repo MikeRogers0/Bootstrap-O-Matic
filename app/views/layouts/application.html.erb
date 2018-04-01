@@ -7,9 +7,6 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <% unless params[:skip] == 'css' %>
-      <%= stylesheet_link_tag    css_source_url, media: 'all', 'data-source-tag': true %>
-    <% end %>
   </head>
 
   <body>
@@ -17,11 +14,21 @@
       <div class="app-title">Bootstrap Configurator</div>
     </div>
     <div class="styleguide-wrapper">
-      <div class="styleguide-navigation" id="styleguide-navigation" role="nav" data-turbolinks-permanent>
+      <div class="styleguide-navigation" id="styleguide-navigation" role="nav">
         <%= render 'navigation' %>
       </div>
       <div class="styleguide-container" role="main">
-        <%= yield %>
+        <styleguide-head>
+          <style>
+            :host {
+              display: block;
+              contain: content;
+            }
+          </style>
+          <%= stylesheet_link_tag    css_generator_url, media: 'all', 'data-source-tag': true %>
+        </styleguide-head>
+
+        <styleguide-content><%= yield %></styleguide-content>
       </div>
       <div class="styleguide-configurator" id="styleguide-configurator" role="configurator" data-turbolinks-permanent>
         <%= render 'configurator' %>

@@ -11,10 +11,7 @@ function configColourInputs(){
 
 function updateCSSFromForm(){
   var sourceUrl = document.querySelector('[data-source-src]').dataset['sourceSrc'];
-  var sourceElm = document.querySelector('[data-source-tag]');
-  
-  replaceCssSource(sourceElm, sourceUrl + '?' + $('.styleguide-configurator form').serialize(), function(){
-  });
+  document.querySelector('styleguide-content').updateSource(sourceUrl + '?' + $('.styleguide-configurator form').serialize());
 }
 
 var updateCSSTimeout = null;

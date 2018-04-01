@@ -1,20 +1,19 @@
 $(document).ready(function(){
-  var sourceUrl = document.querySelector('[data-source-src]').dataset['sourceSrc'];
-  var sourceElm = document.querySelector('[data-source-tag]');
+  //var sourceUrl = document.querySelector('[data-source-src]').dataset['sourceSrc'];
+  //var sourceElm = document.querySelector('[data-source-tag]');
 
-  replaceCssSource(sourceElm, sourceUrl, function(){
-    configColourInputs();
-  });
-  listenForConfiguratorChanges();
+  //replaceCssSource(sourceElm, sourceUrl, function(){
+    //configColourInputs();
+  //});
 });
 
 $(document).on('turbolinks:load', function(){
-  configColourInputs();
+  //configColourInputs();
   listenForConfiguratorChanges();
 });
 
 function replaceCssSource(oldEm, url, callback=function(){}){
-  // Sometimes the URL is flicking back and forth, just just add the listner
+  // Sometimes the URL is flicking back and forth, just just add the listener
   // again
   if( url == oldEm.attributes['href'].value ) {
     oldEm.addEventListener("load", function(){
@@ -33,6 +32,7 @@ function replaceCssSource(oldEm, url, callback=function(){}){
   });
 
   cssElement.setAttribute("href", url);
+  window.cssSource = url;
 
   // Replace the new one in the palace of the old one.
   _oldElm.parentNode.insertBefore(cssElement, oldEm)
