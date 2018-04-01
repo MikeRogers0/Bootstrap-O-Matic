@@ -2,6 +2,22 @@ window.cssSource = null;
 
 $(document).ready(function(){
   customElements.define('styleguide-content', class extends HTMLElement {
+    updateSource(newURL) {
+      // create a new html element
+      var oldElm = this.shadowRoot.querySelector('[data-source-tag]');
+      var cssElement = oldElm.cloneNode();
+
+      cssElement.addEventListener("load", function(){
+        $(this.parentElement).find("[data-source-tag]").not(this).remove();
+      });
+
+      window.cssSource = newURL;
+      cssElement.setAttribute("href", newURL);
+
+      // Replace the new one in the palace of the old one.
+      this.shadowRoot.querySelector('head').append(cssElement)
+    }
+
     constructor() {
       super();
       const shadowRoot = this.attachShadow({mode: 'open'});
@@ -15,13 +31,12 @@ $(document).ready(function(){
       this.innerHTML = '';
 
       if(window.cssSource != null){
-        replaceCssSource(this.shadowRoot.querySelector('[data-source-tag]'), newURL);
+        this.updateSource(window.cssSource);
+      } else {
+        this.shadowRoot.querySelector('[data-source-tag]').addEventListener("load", function(){
+          $(document).trigger('styleguide-o-matic:css-updated');
+        });
       }
-    }
-
-    updateSource(newURL){
-      window.cssSource = newURL;
-      replaceCssSource(this.shadowRoot.querySelector('[data-source-tag]'), newURL);
     }
   });
 });
