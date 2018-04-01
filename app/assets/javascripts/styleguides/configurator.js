@@ -18,10 +18,10 @@ function configFontInputs(){
 
   // Set the font types also
   var fontFamilySansSerif = getComputedStyle(document.querySelector('styleguide-content').shadowRoot.querySelector("body")).getPropertyValue('--font-family-sans-serif').trim();
-  $('[variables[font-family-sans-serif]]').val(fontFamilySansSerif);
+  $('[name="variables[font-family-sans-serif]"]').val(fontFamilySansSerif);
 
   var fontFamilyMonospace = getComputedStyle(document.querySelector('styleguide-content').shadowRoot.querySelector("body")).getPropertyValue('--font-family-monospace').trim();
-  $('[variables[font-family-monospace]]').val(fontFamilyMonospace);
+  $('[name="variables[font-family-monospace]"]').val(fontFamilyMonospace);
 }
 
 function updateCSSFromForm(){

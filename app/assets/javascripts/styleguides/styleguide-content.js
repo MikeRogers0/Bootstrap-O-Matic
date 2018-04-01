@@ -28,8 +28,6 @@ $(document).ready(function(){
       shadowRoot.querySelector('head').innerHTML = document.querySelector('styleguide-head').innerHTML;
       shadowRoot.querySelector('body').innerHTML = this.innerHTML;
 
-      this.innerHTML = '';
-
       if(window.cssSource != null){
         this.updateSource(window.cssSource);
       } else {

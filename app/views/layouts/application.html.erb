@@ -13,11 +13,11 @@
     <div class="styleguide-title" role="nav">
       <div class="app-title">Bootstrap Configurator</div>
     </div>
-    <div class="styleguide-wrapper">
-      <div class="styleguide-navigation" id="styleguide-navigation" role="nav">
+    <div class="styleguide-wrapper" id="styleguide-wrapper">
+      <div class="styleguide-navigation" id="styleguide-navigation" role="nav" data-turbolinks-permanent>
         <%= render 'navigation' %>
       </div>
-      <div class="styleguide-container" role="main">
+      <div class="styleguide-container" role="main" id="styleguide-container">
         <styleguide-head>
           <style>
             :host {
@@ -29,7 +29,7 @@
           <%= stylesheet_link_tag    css_generator_url, media: 'all', 'data-source-tag': true %>
         </styleguide-head>
 
-        <styleguide-content><%= yield %></styleguide-content>
+        <styleguide-content id="styleguide-content"><%= yield %></styleguide-content>
       </div>
       <div class="styleguide-configurator" id="styleguide-configurator" role="configurator" data-turbolinks-permanent>
         <%= render 'configurator' %>
