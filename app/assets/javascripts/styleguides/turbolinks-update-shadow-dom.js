@@ -1,6 +1,7 @@
 function renderShadowDomElm(data, elm) {
   var response = $(document.createElement('div')).html(data);
-  $($(document).find(window.shadowDomElm)[0].shadowRoot).find('body').html( response.find(window.shadowDomElm).html() );
+  $(document).find(window.shadowDomElm)[0].updateContent(response.find(window.shadowDomElm).html())
+
   $(document).find('title').text( response.find('title').text() );
 }
 

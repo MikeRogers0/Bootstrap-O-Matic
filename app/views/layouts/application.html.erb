@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BootstrapConfigurator</title>
+    <title>StyleAMatic</title>
     <%= csrf_meta_tags %>
     <meta name="turbolinks-cache-control" content="no-cache">
 
@@ -10,29 +10,36 @@
   </head>
 
   <body>
-    <div class="styleguide-title" role="nav">
-      <div class="app-title">Styleguide-o-Matic</div>
+    <div class="text-center p-3" role="title">
+      <h1 class="text-center">StyleAMatic</h1>
     </div>
-    <div class="styleguide-wrapper" id="styleguide-wrapper">
-      <div class="styleguide-navigation" id="styleguide-navigation" role="nav" data-turbolinks-permanent>
-        <%= render 'navigation' %>
+    <div class="row">
+      <div class="col-12 col-md-2">
+        <div id="styleguide-navigation" role="nav" data-turbolinks-permanent>
+          <%= render 'navigation' %>
+        </div>
       </div>
-      <div class="styleguide-container" role="main" id="styleguide-container">
-        <styleguide-head>
-          <style>
-            :host {
-              width: 100%;
-              display: block;
-              contain: content;
-            }
-          </style>
-          <%= stylesheet_link_tag    css_generator_url, media: 'all', 'data-source-tag': true %>
-        </styleguide-head>
-
-        <styleguide-content id="styleguide-content"><%= yield %></styleguide-content>
+      <div class="col-12 col-md-7">
+        <div role="main" id="styleguide-container">
+          <styleguide-head>
+            <style>
+              :host {
+                width: 100%;
+                display: block;
+                contain: content;
+              }
+            </style>
+            <%= stylesheet_link_tag    css_generator_url, media: 'all', 'data-source-tag': true %>
+          </styleguide-head>
+          <styleguide-content id="styleguide-content"><%= yield %></styleguide-content>
+        </div>
       </div>
-      <div class="styleguide-configurator" id="styleguide-configurator" role="configurator" data-turbolinks-permanent>
-        <%= render 'configurator' %>
+      <div class="col-12 col-md-3 d-flex">
+        <div class="w-100 p-3 position-relative">
+          <div class="styleguide-configurator p-3" id="styleguide-configurator" role="configurator" data-turbolinks-permanent>
+            <%= render 'configurator' %>
+          </div>
+        </div>
       </div>
     </div>
   </body>
