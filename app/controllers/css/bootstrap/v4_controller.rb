@@ -22,7 +22,10 @@ class Css::Bootstrap::V4Controller < ApplicationController
       syntax: :scss,
       style: :compressed,
       compressed: true,
-      filename: filename
+      filename: filename,
+      source_map_file: ".",
+      source_map_embed: true,
+      source_map_contents: true,
     }).render
   end
 
