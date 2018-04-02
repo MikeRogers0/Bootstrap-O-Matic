@@ -1,39 +1,69 @@
-<%= form_for :variables, url: '#', method: :get, html: { 'data-source-src': css_generator_url } do |f| %>
+<%= simple_form_for :variables, url: '#', method: :get, html: { 'data-source-src': css_generator_url } do |f| %>
   <fieldset>
-    <legend>Colours</legend>
-    <% [:primary, :secondary, :success, :info, :warning, :danger, :light, :dark].each do |color| %>
-      <%= f.label color %>: 
-      <%= f.text_field color, type: 'color', value: '#000000', 'data-value-src': "--#{color}" %><br />
-    <% end %>
+    <legend data-toggle="collapse" data-target="#collapseColors" aria-expanded="true" aria-controls="collapseColors">Colours</legend>
+    <div class="collapse show" id="collapseColors">
+      <% [:primary, :secondary, :success, :info, :warning, :danger, :light, :dark].each do |color| %>
+        <%= f.input color, as: :string,
+          wrapper_html: { class: 'row'},
+          label_html: { class: 'col-6 col-form-label-sm' },
+          input_html: { class: 'col-5 form-control-sm', type: :color, value: '#000000', 'data-value-src': "--#{color}" } %>
+      <% end %>
+    </div>
   </fieldset>
 
   <fieldset>
-    <legend>Fonts</legend>
+    <legend data-toggle="collapse" data-target="#collapseFonts" aria-expanded="true" aria-controls="collapseFonts">Fonts</legend>
+    <div class="collapse show" id="collapseFonts">
+      <%= f.input 'font-size-base', as: :select,
+        include_blank: false,
+        label_html: { class: 'col-form-label-sm' },
+        input_html: { class: 'form-control-sm' },
+        collection: [
+          '0.5rem',
+          '0.75rem',
+          '1rem',
+          '1.25rem',
+          '1.5rem'
+        ] %>
 
-    <%= f.label 'font-size-base' %>: 
-    <%= f.select 'font-size-base', [
-      '0.5rem',
-      '0.75rem',
-      '1rem',
-      '1.25rem',
-      '1.5rem'
-    ] %><br />
+      <%= f.input 'font-family-sans-serif', as: :select,
+        include_blank: false,
+        label_html: { class: 'col-form-label-sm' },
+        input_html: { class: 'form-control-sm' },
+        collection: [
+          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+          'Arial, Helvetica, sans-serif',
+          '"Arial Black", Gadget, sans-serif',
+          '"Comic Sans MS", cursive, sans-serif',
+          'Impact, Charcoal, sans-serif',
+          '"Lucida Sans Unicode", "Lucida Grande", sans-serif'
+        ] %>
 
-    <%= f.label 'font-family-sans-serif' %>: 
-    <%= f.select 'font-family-sans-serif', [
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-      'Arial, Helvetica, sans-serif',
-      '"Arial Black", Gadget, sans-serif',
-      '"Comic Sans MS", cursive, sans-serif',
-      'Impact, Charcoal, sans-serif',
-      '"Lucida Sans Unicode", "Lucida Grande", sans-serif'
-    ] %><br />
+      <%= f.input 'font-family-monospace', as: :select,
+        include_blank: false,
+        label_html: { class: 'col-form-label-sm' },
+        input_html: { class: 'form-control-sm' },
+        collection: [
+          'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+          '"Courier New", Courier, monospace',
+          '"Lucida Console", Monaco, monospace'
+        ] %>
+    </div>
+  </fieldset>
 
-    <%= f.label 'font-family-monospace' %>: 
-    <%= f.select 'font-family-monospace', [
-      'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-      '"Courier New", Courier, monospace',
-      '"Lucida Console", Monaco, monospace'
-    ] %>
+  <fieldset>
+    <legend data-toggle="collapse" data-target="#collapseEmbed" aria-expanded="true" aria-controls="collapseEmbed">Embed</legend>
+    <div class="collapse show" id="collapseEmbed">
+      <p class="small">Use this style on your own site via the following options:</p>
+      <%= f.input :cdn_url, as: :string,
+        readonly: true, 
+        label_html: { class: 'col-form-label-sm' },
+        input_html: { name: nil, value: css_generator_url, class: 'form-control-sm cdn-url' } %>
+
+      <%= f.input :yarn_package, as: :string,
+        readonly: true,
+        label_html: { class: 'col-form-label-sm' },
+        input_html: { name: nil, value: "yarn add styleamatic #{css_generator_url}", class: 'form-control-sm yarn-package' } %>
+    </div>
   </fieldset>
 <% end %>

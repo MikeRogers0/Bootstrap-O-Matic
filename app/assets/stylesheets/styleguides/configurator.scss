@@ -1,12 +1,18 @@
-.styleguide-configurator {
-  position: relative;
-
-  background: #fff;
-  border: 1px solid #ccc;
+.styleguide-navigation, .styleguide-configurator {
   position: sticky;
   top: 10px;
+}
+
+.styleguide-configurator {
+  background: #fff;
+  border: 1px solid #ccc;
 
   form {
     overflow: hidden;
   }
+
+  .form-group {
+    margin-bottom: 0.5rem;
+  }
+
 }

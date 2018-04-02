@@ -7,37 +7,40 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= tag :meta, rel: 'prefetch prerender', href: css_generator_url %>
   </head>
 
   <body>
     <div class="text-center p-3" role="title">
       <h1 class="text-center">StyleAMatic</h1>
     </div>
-    <div class="row">
-      <div class="col-12 col-md-2">
-        <div id="styleguide-navigation" role="nav" data-turbolinks-permanent>
-          <%= render 'navigation' %>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-2 position-relative">
+          <div class="styleguide-navigation" id="styleguide-navigation" role="nav" data-turbolinks-permanent>
+            <%= render 'navigation' %>
+          </div>
         </div>
-      </div>
-      <div class="col-12 col-md-7">
-        <div role="main" id="styleguide-container">
-          <styleguide-head>
-            <style>
-              :host {
-                width: 100%;
-                display: block;
-                contain: content;
-              }
-            </style>
-            <%= stylesheet_link_tag    css_generator_url, media: 'all', 'data-source-tag': true %>
-          </styleguide-head>
-          <styleguide-content id="styleguide-content"><%= yield %></styleguide-content>
+        <div class="col-12 col-md-7">
+          <div role="main" id="styleguide-container">
+            <template id="styleguide-head">
+              <style>
+                :host {
+                  width: 100%;
+                  display: block;
+                  contain: content;
+                }
+              </style>
+              <%= stylesheet_link_tag    css_generator_url, media: 'all', 'data-source-tag': true %>
+            </template>
+            <styleguide-content id="styleguide-content"><%= yield %></styleguide-content>
+          </div>
         </div>
-      </div>
-      <div class="col-12 col-md-3 d-flex">
-        <div class="w-100 p-3 position-relative">
-          <div class="styleguide-configurator p-3" id="styleguide-configurator" role="configurator" data-turbolinks-permanent>
-            <%= render 'configurator' %>
+        <div class="col-12 col-md-3 d-flex">
+          <div class="w-100 p-3 position-relative">
+            <div class="styleguide-configurator p-3" id="styleguide-configurator" role="configurator" data-turbolinks-permanent>
+              <%= render 'configurator' %>
+            </div>
           </div>
         </div>
       </div>

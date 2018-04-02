@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "4.0.0",
+    "colorjoe": "^3.0.2",
     "jquery": "^3.3.1"
   }
 }

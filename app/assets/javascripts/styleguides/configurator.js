@@ -26,7 +26,11 @@ function configFontInputs(){
 
 function updateCSSFromForm(){
   var sourceUrl = document.querySelector('[data-source-src]').dataset['sourceSrc'];
-  document.querySelector('styleguide-content').updateSource(sourceUrl + '?' + $('.styleguide-configurator form').serialize());
+  var sourceQuery = $('.styleguide-configurator form').serialize();
+  document.querySelector('styleguide-content').updateSource(sourceUrl + '?' + sourceQuery);
+
+  $('.styleguide-configurator input.cdn-url').val(sourceUrl + '?' + sourceQuery);
+  $('.styleguide-configurator input.yarn-package').val('yarn add styleamatic ' + sourceUrl + '?' + sourceQuery);
 }
 
 var updateCSSTimeout = null;

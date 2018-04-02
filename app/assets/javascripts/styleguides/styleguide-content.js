@@ -38,7 +38,7 @@ $(document).ready(function(){
       shadowRoot.innerHTML = "<!DOCTYPE html>";
       shadowRoot.append( document.createElement('html') )
       shadowRoot.querySelector('html').innerHTML = "<head></head><body></body>";
-      shadowRoot.querySelector('head').innerHTML = document.querySelector('styleguide-head').innerHTML;
+      shadowRoot.querySelector('head').innerHTML = document.querySelector('#styleguide-head').innerHTML;
       shadowRoot.querySelector('body').innerHTML = this.innerHTML;
 
       this.shadowRoot.querySelectorAll('component-preview').forEach(function(item, index){
