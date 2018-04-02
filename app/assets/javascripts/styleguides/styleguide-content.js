@@ -8,6 +8,12 @@ $(document).ready(function(){
       var cssElement = oldElm.cloneNode();
 
       cssElement.addEventListener("load", function(){
+        // When another CSS sheet as been requested, just remove this sheet.
+        if( window.cssSource != this.href ){
+          $(this).remove();
+          return;
+        }
+
         $(this.parentElement).find("[data-source-tag]").not(this).remove();
       });
 
