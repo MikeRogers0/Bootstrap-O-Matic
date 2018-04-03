@@ -24,13 +24,6 @@
         <div class="col-12 col-md-7">
           <div role="main" id="styleguide-container">
             <template id="styleguide-head">
-              <style>
-                :host {
-                  width: 100%;
-                  display: block;
-                  contain: content;
-                }
-              </style>
               <%= stylesheet_link_tag    css_generator_url, media: 'all', 'data-source-tag': true %>
             </template>
             <styleguide-content id="styleguide-content"><%= yield %></styleguide-content>
