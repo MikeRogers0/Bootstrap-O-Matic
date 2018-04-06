@@ -6,6 +6,7 @@ $(document).ready(function(){
       // create a new html element
       var oldElm = this.shadowRoot.querySelector('[data-source-tag]');
       var cssElement = oldElm.cloneNode();
+      var _this = this;
 
       cssElement.addEventListener("load", function(){
         // When another CSS sheet as been requested, just remove this sheet.
@@ -34,6 +35,7 @@ $(document).ready(function(){
     constructor() {
       super();
       const shadowRoot = this.attachShadow({mode: 'open'});
+      const knownClasses = [];
 
       shadowRoot.innerHTML = "<!DOCTYPE html>";
       shadowRoot.append( document.createElement('html') )

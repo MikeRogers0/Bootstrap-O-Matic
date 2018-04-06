@@ -14,3 +14,7 @@
  *= require_tree ./styleguides/
  *= require_self
  */
+
+body {
+  overflow-x: hidden;
+}
