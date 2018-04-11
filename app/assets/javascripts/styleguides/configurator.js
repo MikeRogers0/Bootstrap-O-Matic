@@ -36,8 +36,6 @@ function updateCSSFromForm(){
 var updateCSSTimeout = null;
 
 function listenForConfiguratorChanges(){
-  var inputs = document.querySelectorAll('.styleguide-configurator input, .styleguide-configurator select');
-
   $('.styleguide-configurator input[type=color]').on('input', function(){
     clearTimeout(updateCSSTimeout);
     updateCSSTimeout = setTimeout(function(){ updateCSSFromForm() }, 50);

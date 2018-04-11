@@ -1,14 +1,15 @@
-<%= simple_form_for BootstrapConfiguration.build_from, url: '#', method: :get, html: { 'data-source-src': css_generator_url } do |f| %>
+<%= simple_form_for resource, url: '#', method: :get, html: { 'data-source-src': css_generator_url } do |f| %>
   <fieldset>
     <legend data-toggle="collapse" data-target="#collapseColors" aria-expanded="true" aria-controls="collapseColors">Colours</legend>
     <div class="collapse show" id="collapseColors">
       <label>Required Colours</label>
-      <% [:primary, :success, :danger].each do |colour| %>
-        <%= f.input colour, as: :string,
+      <%= f.simple_fields_for :required_colours, f.object.required_colours do |ff| %>
+        <%= ff.input :colour, as: :string,
           required: true,
           wrapper_html: { class: 'row'},
+          label: ff.object.name.titleize,
           label_html: { class: 'col-6 col-form-label-sm' },
-          input_html: { class: 'col-5 form-control-sm', type: :color, value: '#000000', 'data-value-src': "--#{colour}" }
+          input_html: { class: 'col-5 form-control-sm', type: :color, value: ff.object.colour, 'data-value-src': "--#{ff.object.colour}" }
         %>
       <% end %>
 

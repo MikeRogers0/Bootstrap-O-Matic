@@ -1,6 +1,7 @@
 class BootstrapConfiguration < ApplicationRecord
-  def optional_colours_attributes=(attributes)
-    # Process the attributes hash
+  def optional_colours_attributes=(values)
+    raise values.inspect
+    #optional_colours=
   end
 
   def optional_colours
@@ -14,7 +15,7 @@ class BootstrapConfiguration < ApplicationRecord
     @optional_colours = nil
   end
 
-  def required_colours_attributes=(attributes)
+  def required_colours_attributes=(values)
     # Process the attributes hash
   end
 
@@ -27,6 +28,16 @@ class BootstrapConfiguration < ApplicationRecord
   def required_colours=(value)
     self.store_required_colours = value
     @required_colours = nil
+  end
+
+  def to_theme_colours
+    theme_colours = required_colours.collect(&:name)
+    theme_colours += optional_colours.collect(&:name)
+
+    processed_theme_colours = theme_colours.collect do |theme_colour|
+      "\"#{theme_colour}\": $#{theme_colour}"
+    end.join(",\n")
+    "$theme-colors: (\n#{processed_theme_colours}\n);"
   end
 
   def self.build_from
@@ -48,6 +59,10 @@ class BootstrapConfiguration < ApplicationRecord
   class Colour < Struct.new(:name, :colour)
     def persisted?
       false
+    end
+
+    def to_scss_variable
+      "$#{name}: #{colour};"
     end
   end
 end

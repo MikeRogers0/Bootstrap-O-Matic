@@ -11,4 +11,9 @@ class Styleguides::Bootstrap::V4Controller < ApplicationController
   def css_generator_url
     css_bootstrap_v4_url(host: ENV['CSS_HOST'], format: :css)
   end
+
+  helper_method :resource
+  def resource
+    @resource ||= BootstrapConfiguration.build_from
+  end
 end
