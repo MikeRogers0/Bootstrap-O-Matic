@@ -16,20 +16,22 @@
     </div>
     <div class="w-100">
       <div class="row">
-        <div class="col-12 col-md-2 position-relative">
+        <div class="col-12 col-sm-12 col-lg-2 position-relative">
           <div class="styleguide-navigation p-3" id="styleguide-navigation" role="nav" data-turbolinks-permanent>
             <%= render 'navigation' %>
           </div>
         </div>
-        <div class="col-12 col-md-7">
-          <div role="main" id="styleguide-container">
-            <template id="styleguide-head">
-              <%= stylesheet_link_tag    css_generator_url, media: 'all', 'data-source-tag': true %>
-            </template>
-            <styleguide-content id="styleguide-content"><%= yield %></styleguide-content>
+        <div class="col-6 col-sm-7 col-lg-7">
+          <div class="pl-3 pr-3">
+            <div role="main" id="styleguide-container">
+              <template id="styleguide-head">
+                <%= stylesheet_link_tag    css_generator_url, media: 'all', 'data-source-tag': true %>
+              </template>
+              <styleguide-content id="styleguide-content"><%= yield %></styleguide-content>
+            </div>
           </div>
         </div>
-        <div class="col-12 col-md-3 d-flex">
+        <div class="col-6 col-sm-5 col-lg-3 d-flex">
           <div class="w-100 p-3 position-relative">
             <div class="styleguide-configurator p-3" id="styleguide-configurator" role="configurator" data-turbolinks-permanent>
               <%= render 'configurator' %>
