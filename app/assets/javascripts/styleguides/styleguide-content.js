@@ -6,7 +6,6 @@ $(document).ready(function(){
       // create a new html element
       var oldElm = this.shadowRoot.querySelector('[data-source-tag]');
       var cssElement = oldElm.cloneNode();
-      var _this = this;
 
       cssElement.addEventListener("load", function(){
         // When another CSS sheet as been requested, just remove this sheet.
@@ -27,15 +26,22 @@ $(document).ready(function(){
 
     updateContent(newBody){
       this.shadowRoot.querySelector('body').innerHTML = newBody;
+      this.rebuildPreviews();
+    }
+
+    rebuildPreviews(){
       this.shadowRoot.querySelectorAll('component-preview').forEach(function(item, index){
         item.buildPreview();
       });
     }
 
+    connectedCallback() {
+      this.rebuildPreviews();
+    }
+
     constructor() {
       super();
       const shadowRoot = this.attachShadow({mode: 'open'});
-      const knownClasses = [];
 
       shadowRoot.innerHTML = "<!DOCTYPE html>";
       shadowRoot.append( document.createElement('html') )
@@ -43,16 +49,8 @@ $(document).ready(function(){
       shadowRoot.querySelector('head').innerHTML = document.querySelector('#styleguide-head').innerHTML;
       shadowRoot.querySelector('body').innerHTML = this.innerHTML;
 
-      this.shadowRoot.querySelectorAll('component-preview').forEach(function(item, index){
-        item.buildPreview();
-      });
-
       if(window.cssSource != null){
         this.updateSource(window.cssSource);
-      } else {
-        this.shadowRoot.querySelector('[data-source-tag]').addEventListener("load", function(){
-          $(document).trigger('styleguide-o-matic:css-updated');
-        });
       }
     }
   });

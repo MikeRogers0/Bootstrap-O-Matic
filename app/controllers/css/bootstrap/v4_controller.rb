@@ -1,10 +1,11 @@
 class Css::Bootstrap::V4Controller < ApplicationController
-  before_action -> { respond_to :css }
+  #before_action -> { respond_to :css, :scss }
 
   def show
     resource.attributes = resource_params
 
     respond_to do |format|
+      format.scss {}
       format.css do
         render body: render_scss
       end
@@ -14,7 +15,7 @@ class Css::Bootstrap::V4Controller < ApplicationController
   private
   # https://stackoverflow.com/questions/24566456/how-do-i-render-sass-in-a-rails-partial
   def render_scss
-    SassC::Engine.new(render_to_string('css/bootstrap/v4/css.scss'), {
+    SassC::Engine.new(render_to_string('css/bootstrap/v4/show.scss'), {
       syntax: :scss,
       style: :compressed,
       compressed: true,

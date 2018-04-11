@@ -1,33 +1,8 @@
-function configColourInputs(){
-  var colorInputs = document.querySelectorAll('[data-value-src]');
-
-  colorInputs.forEach(function(item, index) {
-    var color = getComputedStyle(document.querySelector('styleguide-content').shadowRoot.querySelector("body")).getPropertyValue(item.dataset['valueSrc']).trim();
-    if( color != '' ) {
-      item.value = color;
-    }
-  });
-};
-
-function configFontInputs(){
-  // Get and select the font size base
-  var htmlFontSizeBase = getComputedStyle(document.querySelector('styleguide-content').shadowRoot.querySelector("html")).getPropertyValue('font-size');
-  var bodyFontSizeBase = getComputedStyle(document.querySelector('styleguide-content').shadowRoot.querySelector("body")).getPropertyValue('font-size');
-  var fontSizeBase = parseInt(bodyFontSizeBase) / parseInt(htmlFontSizeBase) + "rem";
-  $('[name="variables[font-size-base]"]').val(fontSizeBase);
-
-  // Set the font types also
-  var fontFamilySansSerif = getComputedStyle(document.querySelector('styleguide-content').shadowRoot.querySelector("body")).getPropertyValue('--font-family-sans-serif').trim();
-  $('[name="variables[font-family-sans-serif]"]').val(fontFamilySansSerif);
-
-  var fontFamilyMonospace = getComputedStyle(document.querySelector('styleguide-content').shadowRoot.querySelector("body")).getPropertyValue('--font-family-monospace').trim();
-  $('[name="variables[font-family-monospace]"]').val(fontFamilyMonospace);
-}
-
 function updateCSSFromForm(){
   var sourceUrl = document.querySelector('[data-source-src]').dataset['sourceSrc'];
   var sourceQuery = $('.styleguide-configurator form').serialize();
   document.querySelector('styleguide-content').updateSource(sourceUrl + '?' + sourceQuery);
+  document.querySelector('styleguide-content').rebuildPreviews();
 
   $('.styleguide-configurator input.cdn-url').val(sourceUrl + '?' + sourceQuery);
   $('.styleguide-configurator input.yarn-package').val('yarn add styleamatic ' + sourceUrl + '?' + sourceQuery);
@@ -35,24 +10,25 @@ function updateCSSFromForm(){
 
 var updateCSSTimeout = null;
 
-function listenForConfiguratorChanges(){
-  $('.styleguide-configurator input[type=color]').on('input', function(){
-    clearTimeout(updateCSSTimeout);
-    updateCSSTimeout = setTimeout(function(){ updateCSSFromForm() }, 50);
+function listenForConfiguratorChanges(selector){
+  selector.find('input[type=color]').on('input', function(){
+    $(this).parents('form').trigger('change');
   });
 
-  $('.styleguide-configurator select').on('change', function(){
-    clearTimeout(updateCSSTimeout);
-    updateCSSTimeout = setTimeout(function(){ updateCSSFromForm() }, 50);
+  selector.find('select, input[type=text]').on('change', function(){
+    $(this).parents('form').trigger('change');
   });
 
+  selector.find('input[type=text]').on('keyup', function(){
+    $(this).parents('form').trigger('change');
+  });
 };
 
 $(document).on('turbolinks:load', function(){
-  listenForConfiguratorChanges();
-});
+  listenForConfiguratorChanges( $('.styleguide-configurator') );
 
-$(document).on('styleguide-o-matic:css-updated', function(){
-  configColourInputs();
-  configFontInputs();
+  $('.styleguide-configurator form').on('change', function(){
+    clearTimeout(updateCSSTimeout);
+    updateCSSTimeout = setTimeout(function(){ updateCSSFromForm() }, 50);
+  });
 });

@@ -1,20 +1,39 @@
 <h1>Buttons</h1>
 
 <p>
-<a href="https://getbootstrap.com/docs/4.0/components/buttons/">Bootstrap Button Docs</a>
+  <a href="https://getbootstrap.com/docs/4.0/components/buttons/">Bootstrap Buttons Docs</a>
 </p>
 
 <component-preview>
-<% [:primary, :secondary, :success, :info, :warning, :danger, :light, :dark].each do |color| %>
-<button type="button" class="btn btn-<%= color %>"><%= color.to_s.titleize %></button>
-<% end %>
+  <template class="variabled-sample-html">
+    <button type="button" class="btn btn-%{colour}">%{colour.capitalize}</button>
+  </template>
+
+  <template class="sample-html">
 <button type="button" class="btn btn-link">Link</button>
+  </template>
 </component-preview>
 
 <h2>Buttons Outlines</h2>
 
 <component-preview>
-<% [:primary, :secondary, :success, :info, :warning, :danger, :light, :dark].each do |color| %>
-<button type="button" class="btn btn-outline-<%= color %>"><%= color.to_s.titleize %></button>
-<% end %>
+  <template class="variabled-sample-html">
+    <button type="button" class="btn btn-outline-%{colour}">%{colour.capitalize}</button>
+  </template>
+</component-preview>
+
+<h2>Buttons Small</h2>
+
+<component-preview>
+  <template class="variabled-sample-html">
+    <button type="button" class="btn btn-%{colour} btn-sm">%{colour.capitalize}</button>
+  </template>
+</component-preview>
+
+<h2>Buttons Large</h2>
+
+<component-preview>
+  <template class="variabled-sample-html">
+    <button type="button" class="btn btn-%{colour} btn-lg">%{colour.capitalize}</button>
+  </template>
 </component-preview>

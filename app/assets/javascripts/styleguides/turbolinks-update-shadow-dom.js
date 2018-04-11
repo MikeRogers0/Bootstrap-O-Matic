@@ -30,7 +30,7 @@ $(document).on('turbolinks:load', function(e){
 });
 
 $(window).on('popstate', function() {
-  if( history.state['update-shadowdom-data'] == undefined ){
+  if( history.state && history.state['update-shadowdom-data'] == undefined ){
     return;
   }
   renderShadowDomElm(history.state['update-shadowdom-data'], history.state['update-shadowdom-elm']);

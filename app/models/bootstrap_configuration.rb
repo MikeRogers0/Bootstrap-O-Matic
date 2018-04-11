@@ -1,7 +1,10 @@
 class BootstrapConfiguration < ApplicationRecord
   def optional_colours_attributes=(values)
-    raise values.inspect
-    #optional_colours=
+    self.optional_colours = values.collect do |id, value|
+      value
+    end.reject do |value|
+      value['name'].blank? || value['colour'].blank?
+    end
   end
 
   def optional_colours
@@ -16,7 +19,11 @@ class BootstrapConfiguration < ApplicationRecord
   end
 
   def required_colours_attributes=(values)
-    # Process the attributes hash
+    self.required_colours = values.collect do |id, value|
+      value
+    end.reject do |value|
+      value['name'].blank? || value['colour'].blank?
+    end
   end
 
   def required_colours
@@ -31,8 +38,8 @@ class BootstrapConfiguration < ApplicationRecord
   end
 
   def to_theme_colours
-    theme_colours = required_colours.collect(&:name)
-    theme_colours += optional_colours.collect(&:name)
+    theme_colours = required_colours.collect(&:id)
+    theme_colours += optional_colours.collect(&:id)
 
     processed_theme_colours = theme_colours.collect do |theme_colour|
       "\"#{theme_colour}\": $#{theme_colour}"
@@ -44,14 +51,20 @@ class BootstrapConfiguration < ApplicationRecord
     bc = BootstrapConfiguration.new
     bc.attributes = {
       required_colours: [
-        Colour.new( 'primary', '#000000' ),
-        Colour.new( 'success', '#000000' ),
-        Colour.new( 'danger', '#000000' ),
+        Colour.new( 'Primary', '#007bff' ),
+        Colour.new( 'Success', '#6c757d' ),
+        Colour.new( 'Danger', '#dc3545' ),
       ],
       optional_colours: [
-        Colour.new( 'custom', '#000000' ),
-        Colour.new( 'custom2', '#000000' )
-      ]
+        Colour.new( 'Secondary', '#6c757d' ),
+        Colour.new( 'Info', '#17a2b8' ),
+        Colour.new( 'Warning', '#ffc107' ),
+        Colour.new( 'Light', '#f8f9fa' ),
+        Colour.new( 'Dark', '#343a40' ),
+      ],
+      font_family_sans_serif: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+      font_family_monospace: 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+      font_size_base: '1rem',
     }
     bc
   end
@@ -61,8 +74,12 @@ class BootstrapConfiguration < ApplicationRecord
       false
     end
 
+    def id
+      name.parameterize
+    end
+
     def to_scss_variable
-      "$#{name}: #{colour};"
+      "$#{id}: #{colour};"
     end
   end
 end
