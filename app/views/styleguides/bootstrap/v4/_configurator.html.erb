@@ -19,11 +19,13 @@
         <% end %>
       </div>
 
-      <%= button_tag 'Add new colour',
-        class: 'btn btn-secondary btn-sm',
-        'data-append-template': '#template-optional-colours',
-        'data-append-to': '#optional-colours-fields'
-      %>
+      <div class="form-group">
+        <%= button_tag 'Add new colour',
+          class: 'btn btn-secondary btn-sm',
+          'data-append-template': '#template-optional-colours',
+          'data-append-to': '#optional-colours-fields'
+        %>
+      </div>
 
       <%= f.simple_fields_for :optional_colours, [BootstrapConfiguration::Colour.new('custom', '#000000')], child_index: 'NEW_RECORD' do |ff| %>
         <template id="template-optional-colours">
