@@ -5,6 +5,9 @@ class Styleguides::Bootstrap::V4Controller < ApplicationController
 
   def buttons; end
   def alerts; end
+  def typography; end
+  def tables; end
+  def forms; end
 
   private
   helper_method :css_generator_url
