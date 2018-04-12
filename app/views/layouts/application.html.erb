@@ -27,7 +27,11 @@
               <template id="styleguide-head">
                 <%= stylesheet_link_tag    css_generator_url, media: 'all', 'data-source-tag': true %>
               </template>
-              <styleguide-content id="styleguide-content"><%= yield %></styleguide-content>
+              <styleguide-content id="styleguide-content">
+                <template>
+                  <%= yield %>
+                </template>
+              </styleguide-content>
             </div>
           </div>
         </div>
