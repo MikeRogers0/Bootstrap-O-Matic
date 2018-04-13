@@ -7,6 +7,7 @@ $(document).on('turbolinks:load', function(){
       'NEW_RECORD': Date.now() + "0" + Math.floor((Math.random() * 10000) + 1)
     }) );
 
+    setupSpectrumFields($($(this).data('append-to')).find('> div').last());
     listenForConfiguratorChanges($($(this).data('append-to')).find('> div').last());
   });
 

@@ -1,5 +1,5 @@
-$(document).on('turbolinks:load', function(){
-  $("[type=text-color]").spectrum({
+function setupSpectrumFields(selector){
+  selector.find("[type=text-color]").spectrum({
     preferredFormat: "hex",
     showInput: true,
     appendTo: '.styleguide-configurator',
@@ -8,5 +8,8 @@ $(document).on('turbolinks:load', function(){
       $(this).trigger('change');
     }
   });
+}
 
+$(document).on('turbolinks:load', function(){
+  setupSpectrumFields($(document));
 });
