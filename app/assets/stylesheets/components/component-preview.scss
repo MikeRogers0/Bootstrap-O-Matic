@@ -1,20 +1,22 @@
 component-preview {
-  padding: 0.5rem;
-  background: #f8f9fa;
-  overflow: hidden;
-  display: block;
-  margin-bottom: 1rem;
-  border-radius: 0.25rem;
-
-  > .component-preview {
-    padding: 1rem;
-    background: #fff;
+  > .group-variabled, > .variabled > .variabled-item, > .simple {
+    padding: 0.5rem;
+    background: #f8f9fa;
+    overflow: hidden;
+    display: block;
+    margin-bottom: 1rem;
     border-radius: 0.25rem;
-  }
 
-  > pre {
-    padding: 1rem;
-    border-radius: 0.25rem;
-    margin-bottom: 0;
+    > .component-preview {
+      padding: 1rem;
+      background: #fff;
+      border-radius: 0.25rem;
+    }
+
+    > pre {
+      padding: 1rem;
+      border-radius: 0.25rem;
+      margin-bottom: 0;
+    }
   }
 }
