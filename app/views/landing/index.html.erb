@@ -1,7 +1,21 @@
 <div class="container">
-  <h1>Landing#index</h1>
-  <p>Find me in app/views/landing/index.html.erb</p>
+  <div class="w-50 ml-auto mr-auto mt-3 mb-4 text-center">
+    <p class="lead">Have you ever picked up a bootstrap project &amp; just wished there was a living styleguide for it?</p>
 
-  <%= simple_form_for ParseCSSForm.new do |f| %>
-  <% end %>
+    <p class="lead">Styleguide-o-matic fixes that.<br />Just pop your CSS into the form below and let it do its magic.<p>
+  </div>
+
+  <div class="w-50 ml-auto mr-auto mt-4 mb-4">
+    <%= render 'css_parsers/form', resource: ParseCSSForm.new %>
+  </div>
+
+  <h2 class="text-center h4">Or</h2>
+
+  <div class="w-50 ml-auto mr-auto mt-4 mb-4">
+    <%= simple_form_for :random_css_form, url: styleguides_bootstrap_v4_path, method: :get do |f| %>
+      <div class="form-actions text-center">
+        <%= f.submit class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+@import "functions";
 
 // Required Colours
 <%= resource.required_colours.collect(&:to_scss_variable).join("\n") %>
@@ -18,7 +19,6 @@ $font-family-monospace: <%= resource.font_family_monospace.html_safe %>;
 $font-family-base: $font-family-sans-serif;
 $font-size-base: <%= resource.font_size_base %>;
 
-@import "functions";
 @import "variables";
 
 /* Theme Colours (Overriding what was defined in _variables.scss) */

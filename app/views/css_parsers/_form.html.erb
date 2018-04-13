@@ -1,0 +1,6 @@
+<%= simple_form_for resource, url: css_parser_path do |f| %>
+  <%= f.input :url, label_html: { class: 'sr-only' } %>
+  <div class="form-actions text-center">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -45,12 +45,17 @@ gem 'simple_form'
 # Validation
 gem 'valid_url'
 
+# Parsing CSS
+gem 'css_parser'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 3.0'
   gem 'selenium-webdriver'
+
+  gem 'i18n-debug'
 end
 
 group :development do

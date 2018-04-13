@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :css_parsers, only: [:create]
+  resource :css_parsers, only: [:create], as: :css_parser, path: 'css-parser'
 
   root to: 'landing#index'
 end

@@ -1,0 +1,5 @@
+en:
+  simple_form:
+    placeholders:
+      parse_css_form:
+        url: "https://www.example.com/site.css - Don't be shy!"

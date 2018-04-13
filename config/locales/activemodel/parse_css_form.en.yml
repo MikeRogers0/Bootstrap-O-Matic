@@ -1,0 +1,5 @@
+en:
+  activemodel:
+    attributes:
+      parse_css_form:
+        url: "URL of your current Bootstrap CSS file"

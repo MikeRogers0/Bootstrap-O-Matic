@@ -66,6 +66,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    css_parser (1.6.0)
+      addressable
     dalli (2.7.8)
     dotenv (2.2.2)
     dotenv-rails (2.2.2)
@@ -78,6 +80,8 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.0.0)
       concurrent-ruby (~> 1.0)
+    i18n-debug (1.1.1)
+      i18n (< 2)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -194,8 +198,10 @@ DEPENDENCIES
   byebug
   capybara (~> 3.0)
   coffee-rails (~> 4.2)
+  css_parser
   dalli
   dotenv-rails
+  i18n-debug
   jbuilder (~> 2.5)
   model_attribute
   pg

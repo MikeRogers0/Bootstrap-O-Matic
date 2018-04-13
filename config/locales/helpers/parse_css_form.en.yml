@@ -1,0 +1,5 @@
+en:
+  helpers:
+    submit:
+      parse_css_form:
+        create: "Build your styleguide"

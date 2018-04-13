@@ -1,10 +1,19 @@
 @import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/mixins";
 
-// Hello Perks custom overrides
+// My custom variables
 @import "bootstrap/variables";
 
+@import "bootstrap/scss/variables";
+
+// My custom overrides
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "danger":     $danger
+);
+
+@import "bootstrap/scss/mixins";
 @import "bootstrap/scss/root";
 @import "bootstrap/scss/reboot";
 @import "bootstrap/scss/type";
