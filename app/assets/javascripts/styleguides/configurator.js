@@ -11,7 +11,7 @@ function updateCSSFromForm(){
 var updateCSSTimeout = null;
 
 function listenForConfiguratorChanges(selector){
-  selector.find('input[type=color]').on('input', function(){
+  selector.find('input[type=text-color]').on('input', function(){
     $(this).parents('form').trigger('change');
   });
 

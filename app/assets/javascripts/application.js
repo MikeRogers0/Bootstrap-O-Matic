@@ -14,5 +14,7 @@
 //= require turbolinks
 //= require jquery/dist/jquery.min
 //= require bootstrap/dist/js/bootstrap.js
+//= require spectrum-colorpicker/spectrum.js
 //= require_tree ./helpers
+//= require_tree ./components
 //= require_tree ./styleguides
