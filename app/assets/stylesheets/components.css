@@ -1,4 +1,5 @@
 /*
+ *= require highlightjs/styles/vs.css
  *= require_tree ./components/
  *= require_self
  */

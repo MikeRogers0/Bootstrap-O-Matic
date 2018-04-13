@@ -8,14 +8,15 @@ component-preview {
     border-radius: 0.25rem;
 
     > .component-preview {
-      padding: 1rem;
+      padding: 0.5rem 1rem;
       background: #fff;
       border-radius: 0.25rem;
     }
 
-    > pre {
-      padding: 1rem;
+    > pre > code {
+      padding: 0.5rem 1rem;
       border-radius: 0.25rem;
+      margin-top: 1rem;
       margin-bottom: 0;
     }
   }

@@ -6,7 +6,9 @@ $(document).ready(function(){
     }
 
     getTemplate() {
-      return this.querySelector('template').innerHTML.trim();
+      return html_beautify(this.querySelector('template').innerHTML.trim(), {
+        indent_size: 2
+      }).trim();
     }
 
     buildSimple() {
@@ -16,7 +18,7 @@ $(document).ready(function(){
         this.innerHTML += `
           <div class="simple">
             <div class="component-preview"></div>
-            <pre><code class="component-code"></code></pre>
+            <pre><code class="component-code html"></code></pre>
           </div>
         `;
       }
@@ -34,7 +36,7 @@ $(document).ready(function(){
         variableSampleElm.className = 'variabled-item';
         variableSampleElm.innerHTML = `
             <div class="component-preview"></div>
-            <pre><code class="component-code"></code></pre>
+            <pre><code class="component-code html"></code></pre>
         `;
 
         var variabledSample = _template.replaceVariables({
@@ -52,7 +54,7 @@ $(document).ready(function(){
         this.innerHTML += `
           <div class="variabled">
             <div class="component-preview"></div>
-            <pre><code class="component-code"></code></pre>
+            <pre><code class="component-code html"></code></pre>
           </div>
         `;
       }
@@ -75,7 +77,7 @@ $(document).ready(function(){
         this.innerHTML += `
           <div class="group-variabled">
             <div class="component-preview"></div>
-            <pre><code class="component-code"></code></pre>
+            <pre><code class="component-code html"></code></pre>
           </div>
         `;
       }
@@ -99,7 +101,12 @@ $(document).ready(function(){
         this.buildSimple();
       }
 
-      $(this.querySelector('.component-preview')).find('[data-dismiss="alert"]').on('click', function(){
+      // Highlight the code samples.
+      this.querySelectorAll('.component-code').forEach(function(item, index){
+        hljs.highlightBlock(item);
+      });
+
+      $(this.querySelector('div')).find('.component-preview [data-dismiss="alert"]').on('click', function(){
         $(this).parents('.alert').alert('close');
       });
     }
