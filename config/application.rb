@@ -52,5 +52,7 @@ module BootstrapConfigurator
       'Referrer-Policy' => 'no-referrer-when-downgrade'
     })
     
+    # No active storage for now.
+    config.active_storage.service = nil
   end
 end

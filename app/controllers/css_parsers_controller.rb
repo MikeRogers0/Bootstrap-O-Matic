@@ -1,0 +1,2 @@
+class CssParsersController < ApplicationController
+end

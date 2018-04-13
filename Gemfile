@@ -39,7 +39,11 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'sass'
 
+gem 'model_attribute'
 gem 'simple_form'
+
+# Validation
+gem 'valid_url'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

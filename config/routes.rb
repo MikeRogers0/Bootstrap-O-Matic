@@ -15,5 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: redirect('/styleguides/bootstrap/4')
+  resource :css_parsers, only: [:create]
+
+  root to: 'landing#index'
 end
