@@ -2,8 +2,8 @@ class CssParsersController < ApplicationController
   layout 'landing'
 
   def create
-    return render :new unless resource.valid?
-    redirect_to styleguides_bootstrap_v4_path
+    return render :new unless resource.save
+    redirect_to styleguides_bootstrap_v4_path(id: resource.styleguide)
   end
 
   private

@@ -46,7 +46,7 @@ gem 'simple_form'
 gem 'valid_url'
 
 # Parsing CSS
-gem 'css_parser'
+gem 'css_parser', github: 'premailer/css_parser'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
