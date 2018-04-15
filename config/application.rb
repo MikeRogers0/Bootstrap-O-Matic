@@ -67,5 +67,9 @@ module BootstrapConfigurator
       'Content-Security-Policy' => ENV.fetch('CONTENT_SECURITY_POLICY') { '' },
       'Referrer-Policy' => 'no-referrer-when-downgrade'
     })
+
+    config.action_controller.default_url_options = {
+      protocol: :https
+    }
   end
 end
