@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require spectrum-colorpicker/spectrum.css
+ *= require select2/dist/css/select2.min.css
  *= require style-o-matic
  *= require_tree ./styleguides/
  *= require_self

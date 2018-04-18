@@ -19,7 +19,7 @@ class ParseCSSForm < ApplicationForm
       required_colours: required_colours,
       optional_colours: optional_colours,
       font_size_base: font_size_base,
-      font_family_sans_serif: font_family_sans_serif,
+      font_family_sans_serif: font_family_sans_serif.split(',').collect(&:strip).uniq,
       #font_family_monospace: '',
     }
     @styleguide.save

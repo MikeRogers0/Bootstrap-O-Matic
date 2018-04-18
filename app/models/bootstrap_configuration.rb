@@ -62,11 +62,19 @@ class BootstrapConfiguration < ApplicationRecord
         Colour.new( 'Light', '#f8f9fa' ),
         Colour.new( 'Dark', '#343a40' ),
       ],
-      font_family_sans_serif: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-      font_family_monospace: 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+      font_family_sans_serif: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'.split(', '),
+      font_family_monospace: 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'.split(', '),
       font_size_base: 1,
     }
     bc
+  end
+
+  def self.options_for_font_family_sans_serif
+    ["-apple-system", "BlinkMacSystemFont", "\"Segoe UI\"", "Roboto", "\"Helvetica Neue\"", "Arial", "sans-serif", "\"Apple Color Emoji\"", "\"Segoe UI Emoji\"", "\"Segoe UI Symbol\"", "Helvetica", "\"Arial Black\"", "Gadget", "\"Comic Sans MS\"", "cursive", "Impact", "Charcoal", "\"Lucida Sans Unicode\"", "\"Lucida Grande\""]
+  end
+
+  def self.options_for_font_family_monospace
+    ["SFMono-Regular", "Menlo", "Monaco", "Consolas", "\"Liberation Mono\"", "\"Courier New\"", "monospace", "Courier", "\"Lucida Console\""]
   end
 
   class Colour < Struct.new(:name, :colour)

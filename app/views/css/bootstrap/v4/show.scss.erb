@@ -14,8 +14,8 @@
 <%= resource.optional_colours.collect(&:to_scss_variable).join("\n") %>
 
 // Fonts
-$font-family-sans-serif: <%= resource.font_family_sans_serif.html_safe %>;
-$font-family-monospace: <%= resource.font_family_monospace.html_safe %>;
+$font-family-sans-serif: <%= sanitize(resource.font_family_sans_serif.reject(&:empty?).join(', '), tags: []) %>;
+$font-family-monospace: <%= sanitize(resource.font_family_monospace.reject(&:empty?).join(', '), tags: []) %>;
 $font-family-base: $font-family-sans-serif;
 $font-size-base: <%= resource.font_size_base %>rem;
 
