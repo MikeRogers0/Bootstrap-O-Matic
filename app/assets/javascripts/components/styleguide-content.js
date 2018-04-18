@@ -33,6 +33,10 @@ $(document).ready(function(){
       this.shadowRoot.querySelectorAll('component-preview').forEach(function(item, index){
         item.buildPreview();
       });
+
+      this.shadowRoot.querySelectorAll('colour-swatches').forEach(function(item, index){
+        item.buildPreview();
+      });
     }
 
     connectedCallback() {

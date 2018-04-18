@@ -8,6 +8,7 @@ class Styleguides::Bootstrap::V4Controller < ApplicationController
   def typography; end
   def tables; end
   def forms; end
+  def progress; end
 
   private
   helper_method :css_generator_url

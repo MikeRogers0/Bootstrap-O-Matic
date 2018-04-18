@@ -1,3 +1,18 @@
 <h1>Bootstrap 4 - Styleguide</h1>
 
-[Colour Swatches]
+<p>This is a living styleguide, you can adjust the colours and fonts via the panel on the right, then see the changes in almost real-time.</p>
+
+<h2>Colour Swatches</h2>
+
+<colour-swatches>
+  <template>
+    <div class="col-6 col-sm-3 colour-swatch">
+      <div class="border border-%{colour} rounded mb-3">
+        <div class="bg-%{colour} p-3 mb-3 colour-swatch--sample">
+          <div class="text-%{colour} text-inverted text-center">%{colour.hex}</div>
+        </div>
+        <p class="text-center text-muted small colour-swatch--variable">%{colour.variable}</p>
+      </div>
+    </div>
+  </template>
+</colour-swatches>
