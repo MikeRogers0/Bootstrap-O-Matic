@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   namespace :styleguides do
     namespace :bootstrap, path: 'bootstrap' do
       resource :v4, path: '4', controller: 'v4', only: [:show] do
-        get '/:action', as: :page
+        [:buttons, :alerts, :typography, :tables, :forms, :progress].each do |action|
+          get "/#{action}", action: action
+        end
       end
     end
   end
