@@ -4,7 +4,7 @@ class Colormind::API
 
     if response.status == 200
       result = JSON.parse(response.body)['result'].collect do |colours|
-        "##{colours.collect {|c| c.to_s(16)}.join('')}"
+        "##{colours.collect {|c| c.to_s(16).ljust(2, '0') }.join('')}"
       end
     else
       []
