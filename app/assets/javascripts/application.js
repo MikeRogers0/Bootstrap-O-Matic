@@ -17,6 +17,7 @@
 //= require spectrum-colorpicker/spectrum.js
 //= require highlightjs/highlight.pack.min.js
 //= require js-beautify/js/lib/beautify-html.js
+//= require bootstrap/dist/js/bootstrap.bundle.min.js
 //= require_tree ./helpers
 //= require_tree ./components
 //= require_tree ./styleguides

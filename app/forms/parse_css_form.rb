@@ -31,8 +31,8 @@ class ParseCSSForm < ApplicationForm
       font_size = css['font-size'].gsub(';', '')
       next unless font_size.present?
 
-      return font_size if font_size.ends_with?('rem')
-      return "#{( BigDecimal.new(font_size.to_i) / BigDecimal.new(16) ).round(2)}rem" if font_size.ends_with?('px')
+      return font_size.to_f if font_size.ends_with?('rem')
+      return "#{( BigDecimal.new(font_size.to_i) / BigDecimal.new(16) ).round(2)}" if font_size.ends_with?('px')
     end
     nil
   end

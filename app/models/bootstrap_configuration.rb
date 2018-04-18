@@ -64,7 +64,7 @@ class BootstrapConfiguration < ApplicationRecord
       ],
       font_family_sans_serif: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
       font_family_monospace: 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-      font_size_base: '1rem',
+      font_size_base: 1,
     }
     bc
   end

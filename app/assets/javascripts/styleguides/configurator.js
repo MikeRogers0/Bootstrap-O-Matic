@@ -15,11 +15,7 @@ function listenForConfiguratorChanges(selector){
     $(this).parents('form').trigger('change');
   });
 
-  selector.find('select, input[type=text]').on('change', function(){
-    $(this).parents('form').trigger('change');
-  });
-
-  selector.find('input[type=text]').on('keyup', function(){
+  selector.find('select, input').on('change keyup', function(){
     $(this).parents('form').trigger('change');
   });
 };
