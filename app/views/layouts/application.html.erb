@@ -24,7 +24,7 @@
           <div role="main" id="styleguide-container">
             <template id="styleguide-head">
               <%= stylesheet_link_tag 'components', media: 'all' %>
-              <%= stylesheet_link_tag    css_generator_url, media: 'all', 'data-source-tag': true %>
+              <%= stylesheet_link_tag    css_generator_url(id: resource.id), media: 'all', 'data-source-tag': true %>
             </template>
             <styleguide-content id="styleguide-content">
               <template>

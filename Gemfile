@@ -45,6 +45,10 @@ gem 'simple_form'
 # Validation
 gem 'valid_url'
 
+# Faraday - Used for API calls to Colormind
+gem 'faraday'
+
+
 # Parsing CSS
 gem 'css_parser', github: 'premailer/css_parser'
 

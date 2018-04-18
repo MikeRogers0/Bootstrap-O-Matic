@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resource :css_parsers, only: [:create], as: :css_parser, path: 'css-parser'
+  resource :css_randoms, only: [:create], as: :css_random, path: 'css-random'
 
   root to: 'landing#index'
 end

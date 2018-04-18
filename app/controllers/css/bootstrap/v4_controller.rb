@@ -28,7 +28,11 @@ class Css::Bootstrap::V4Controller < ApplicationController
 
   helper_method :resource
   def resource
-    @resource ||= BootstrapConfiguration.build_from
+    if params[:id].present?
+      @resource ||= BootstrapConfiguration.find(params[:id])
+    else
+      @resource ||= BootstrapConfiguration.build_from
+    end
   end
 
   def resource_params
