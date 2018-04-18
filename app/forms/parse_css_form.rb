@@ -20,7 +20,7 @@ class ParseCSSForm < ApplicationForm
       optional_colours: optional_colours,
       font_size_base: font_size_base,
       font_family_sans_serif: font_family_sans_serif.split(',').collect(&:strip).uniq,
-      #font_family_monospace: '',
+      font_family_monospace: font_family_monospace.split(',').collect(&:strip).uniq,
     }
     @styleguide.save
   end
@@ -38,6 +38,10 @@ class ParseCSSForm < ApplicationForm
   end
 
   def font_family_sans_serif
+    @parser.find_rule_sets([":root"]).each do |css|
+      return css['--font-family-sans-serif'].gsub(';', '') if css['--font-family-sans-serif'].present?
+    end
+
     @parser.find_rule_sets(["body"]).each do |css|
       css.expand_font_shorthand!
       return css['font-family'].gsub(';', '') if css['font-family'].present?
@@ -46,7 +50,11 @@ class ParseCSSForm < ApplicationForm
   end
 
   def font_family_monospace
-    @parser.find_rule_sets(["body"]).each do |css|
+    @parser.find_rule_sets([":root"]).each do |css|
+      return css['--font-family-monospace'].gsub(';', '') if css['--font-family-monospace'].present?
+    end
+
+    @parser.find_rule_sets(["pre,code,kbd,samp"]).each do |css|
       css.expand_font_shorthand!
       return css['font-family'].gsub(';', '') if css['font-family'].present?
     end
@@ -81,17 +89,25 @@ class ParseCSSForm < ApplicationForm
       end
     end
 
+    @theme_colour_names.select! do |colour|
+      find_colour_by_variable(colour).present?
+    end
+
     @theme_colour_names = @theme_colour_names.compact.uniq - ['link', 'sm', 'lg', 'block', 'xs', 'toolbar']
   end
 
   def find_colour_by_variable(name)
-      css = @parser.find_rule_sets([".btn-#{name}"]).first
-      if css.present?
-        css.expand_background_shorthand!
-        css['background-color'].gsub(';', '')
-      else
-        '#000'
-      end
+    @parser.find_rule_sets([":root"]).each do |css|
+      return css["--#{name}"].gsub(';', '') if css["--#{name}"].present?
+    end
+
+    css = @parser.find_rule_sets([".btn-#{name}"]).first
+    if css.present?
+      css.expand_background_shorthand!
+      css['background-color'].gsub(';', '')
+    else
+      '#000'
+    end
   end
 
   def load_url!

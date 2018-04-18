@@ -69,12 +69,12 @@ class BootstrapConfiguration < ApplicationRecord
     bc
   end
 
-  def self.options_for_font_family_sans_serif
-    ["-apple-system", "BlinkMacSystemFont", "\"Segoe UI\"", "Roboto", "\"Helvetica Neue\"", "Arial", "sans-serif", "\"Apple Color Emoji\"", "\"Segoe UI Emoji\"", "\"Segoe UI Symbol\"", "Helvetica", "\"Arial Black\"", "Gadget", "\"Comic Sans MS\"", "cursive", "Impact", "Charcoal", "\"Lucida Sans Unicode\"", "\"Lucida Grande\""]
+  def options_for_font_family_sans_serif
+    (font_family_sans_serif + ["-apple-system", "BlinkMacSystemFont", "\"Segoe UI\"", "Roboto", "\"Helvetica Neue\"", "Arial", "sans-serif", "\"Apple Color Emoji\"", "\"Segoe UI Emoji\"", "\"Segoe UI Symbol\"", "Helvetica", "\"Arial Black\"", "Gadget", "\"Comic Sans MS\"", "cursive", "Impact", "Charcoal", "\"Lucida Sans Unicode\"", "\"Lucida Grande\""]).uniq
   end
 
-  def self.options_for_font_family_monospace
-    ["SFMono-Regular", "Menlo", "Monaco", "Consolas", "\"Liberation Mono\"", "\"Courier New\"", "monospace", "Courier", "\"Lucida Console\""]
+  def options_for_font_family_monospace
+    (font_family_monospace + ["SFMono-Regular", "Menlo", "Monaco", "Consolas", "\"Liberation Mono\"", "\"Courier New\"", "monospace", "Courier", "\"Lucida Console\""]).uniq
   end
 
   class Colour < Struct.new(:name, :colour)
