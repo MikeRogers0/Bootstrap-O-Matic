@@ -1,0 +1,10 @@
+[data-toggle="collapse"] {
+
+  &::after {
+    float: right;
+    content: '+'
+  }
+  &[aria-expanded="false"]::after {
+    content: '-'
+  }
+}

@@ -1,79 +1,75 @@
 <%= simple_form_for resource, url: '#', method: :get, html: { 'data-source-src': css_generator_url } do |f| %>
-  <fieldset>
-    <legend data-toggle="collapse" data-target="#collapseColors" aria-expanded="true" aria-controls="collapseColors">Colours</legend>
-    <div class="collapse show" id="collapseColors">
-      <div id="required-colours-fields">
-        <%= f.simple_fields_for :required_colours, f.object.required_colours do |ff| %>
-          <%= render 'styleguides/bootstrap/v4/configurator/required_colours', ff: ff %>
-        <% end %>
-      </div>
-
-      <div id="optional-colours-fields">
-        <%= f.simple_fields_for :optional_colours, f.object.optional_colours do |ff| %>
-          <%= render 'styleguides/bootstrap/v4/configurator/optional_colours', ff: ff %>
-        <% end %>
-      </div>
-
-      <div class="form-group">
-        <%= button_tag 'Add new colour',
-          class: 'btn btn-secondary btn-sm',
-          'data-append-template': '#template-optional-colours',
-          'data-append-to': '#optional-colours-fields'
-        %>
-      </div>
-
-      <%= f.simple_fields_for :optional_colours, [BootstrapConfiguration::Colour.new('', '#000000')], child_index: 'NEW_RECORD' do |ff| %>
-        <template id="template-optional-colours">
-          <%= render 'styleguides/bootstrap/v4/configurator/optional_colours', ff: ff %>
-        </template>
+  <a data-toggle="collapse" data-target="#collapseColors" aria-expanded="true" aria-controls="collapseColors" class="h4 w-100 text-left btn p-0 font-weight-bold" href="collapseColors">
+    Colours
+  </a>
+  <div class="collapse show" id="collapseColors">
+    <div id="required-colours-fields">
+      <%= f.simple_fields_for :required_colours, f.object.required_colours do |ff| %>
+        <%= render 'styleguides/bootstrap/v4/configurator/required_colours', ff: ff %>
       <% end %>
     </div>
-    <hr />
-  </fieldset>
 
-  <fieldset>
-    <legend data-toggle="collapse" data-target="#collapseFonts" aria-expanded="true" aria-controls="collapseFonts">Fonts</legend>
-    <div class="collapse show" id="collapseFonts">
-      <%= f.input :font_size_base, as: :range,
-        label_html: { class: 'col-form-label-sm' },
-        input_html: { 
-          class: 'form-control-sm html5-slider',
-          min: 0.10,
-          step: 0.05,
-          max: 3
-        }
-      %>
+    <div id="optional-colours-fields">
+      <%= f.simple_fields_for :optional_colours, f.object.optional_colours do |ff| %>
+        <%= render 'styleguides/bootstrap/v4/configurator/optional_colours', ff: ff %>
+      <% end %>
+    </div>
 
-      <%= f.input :font_family_sans_serif, as: :select,
-        include_blank: false,
-        label_html: { class: 'col-form-label-sm' },
-        input_html: { class: 'form-control-sm select2', multiple: true },
-        collection: f.object.class.options_for_font_family_sans_serif
-      %>
-
-      <%= f.input :font_family_monospace, as: :select,
-        include_blank: false,
-        label_html: { class: 'col-form-label-sm' },
-        input_html: { class: 'form-control-sm select2', multiple: true },
-        collection: f.object.class.options_for_font_family_monospace
+    <div class="form-group">
+      <%= button_tag 'Add new colour',
+        class: 'btn btn-secondary btn-sm',
+        'data-append-template': '#template-optional-colours',
+        'data-append-to': '#optional-colours-fields'
       %>
     </div>
-    <hr />
-  </fieldset>
 
-  <fieldset>
-    <legend data-toggle="collapse" data-target="#collapseEmbed" aria-expanded="true" aria-controls="collapseEmbed">Embed</legend>
-    <div class="collapse show" id="collapseEmbed">
-      <p class="small">Use this style on your own site via the following options:</p>
-      <%= f.input :cdn_url, as: :string,
-        readonly: true, 
-        label_html: { class: 'col-form-label-sm' },
-        input_html: { name: nil, value: css_generator_url(id: resource.id), class: 'form-control-sm cdn-url' } %>
+    <%= f.simple_fields_for :optional_colours, [BootstrapConfiguration::Colour.new('', '#000000')], child_index: 'NEW_RECORD' do |ff| %>
+      <template id="template-optional-colours">
+        <%= render 'styleguides/bootstrap/v4/configurator/optional_colours', ff: ff %>
+      </template>
+    <% end %>
+  </div>
+  <hr />
 
-      <%= f.input :yarn_package, as: :string,
-        readonly: true,
-        label_html: { class: 'col-form-label-sm' },
-        input_html: { name: nil, value: "yarn add styleamatic #{css_generator_url(id: resource.id)}", class: 'form-control-sm yarn-package' } %>
-    </div>
-  </fieldset>
+  <a data-toggle="collapse" data-target="#collapseFonts" aria-expanded="true" aria-controls="collapseFonts" class="h4 w-100 text-left btn p-0 font-weight-bold" href="collapseFonts">Fonts</a>
+  <div class="collapse show" id="collapseFonts">
+    <%= f.input :font_size_base, as: :range,
+      label_html: { class: 'col-form-label-sm' },
+      input_html: { 
+        class: 'form-control-sm html5-slider',
+        min: 0.10,
+        step: 0.05,
+        max: 3
+      }
+    %>
+
+    <%= f.input :font_family_sans_serif, as: :select,
+      include_blank: false,
+      label_html: { class: 'col-form-label-sm' },
+      input_html: { class: 'form-control-sm select2', multiple: true },
+      collection: f.object.class.options_for_font_family_sans_serif
+    %>
+
+    <%= f.input :font_family_monospace, as: :select,
+      include_blank: false,
+      label_html: { class: 'col-form-label-sm' },
+      input_html: { class: 'form-control-sm select2', multiple: true },
+      collection: f.object.class.options_for_font_family_monospace
+    %>
+  </div>
+  <hr />
+
+  <a data-toggle="collapse" data-target="#collapseEmbed" aria-expanded="true" aria-controls="collapseEmbed" class="h4 w-100 text-left btn p-0 font-weight-bold" href="collapseEmbed">Embed</a>
+  <div class="collapse show" id="collapseEmbed">
+    <p class="small">Use this style on your own site via the following options:</p>
+    <%= f.input :cdn_url, as: :string,
+      readonly: true, 
+      label_html: { class: 'col-form-label-sm' },
+      input_html: { name: nil, value: css_generator_url(id: resource.id), class: 'form-control-sm cdn-url select-on-clickable' } %>
+
+    <%= f.input :yarn_package, as: :string,
+      readonly: true,
+      label_html: { class: 'col-form-label-sm' },
+      input_html: { name: nil, value: "yarn add styleamatic #{css_generator_url(id: resource.id)}", class: 'form-control-sm yarn-package select-on-clickable' } %>
+  </div>
 <% end %>
