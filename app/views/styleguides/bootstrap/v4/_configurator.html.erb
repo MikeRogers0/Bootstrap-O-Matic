@@ -79,12 +79,12 @@
       <%= f.input :cdn_url, as: :string,
         readonly: true, 
         label_html: { class: 'col-form-label-sm' },
-        input_html: { name: nil, value: css_generator_url, class: 'form-control-sm cdn-url' } %>
+        input_html: { name: nil, value: css_generator_url(id: resource.id), class: 'form-control-sm cdn-url' } %>
 
       <%= f.input :yarn_package, as: :string,
         readonly: true,
         label_html: { class: 'col-form-label-sm' },
-        input_html: { name: nil, value: "yarn add styleamatic #{css_generator_url}", class: 'form-control-sm yarn-package' } %>
+        input_html: { name: nil, value: "yarn add styleamatic #{css_generator_url(id: resource.id)}", class: 'form-control-sm yarn-package' } %>
     </div>
   </fieldset>
 <% end %>
