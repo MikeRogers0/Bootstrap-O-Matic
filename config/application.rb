@@ -62,6 +62,8 @@ module BootstrapConfigurator
     config.i18n.load_path += Dir["#{Rails.root}/config/locales/**/*.{rb,yml}"]
 
     #config.middleware.use Rack::Attack
+    
+    config.force_ssl = true
 
     config.action_dispatch.default_headers.merge!({
       'Content-Security-Policy' => ENV.fetch('CONTENT_SECURITY_POLICY') { '' },
