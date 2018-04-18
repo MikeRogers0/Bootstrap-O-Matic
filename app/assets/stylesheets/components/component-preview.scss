@@ -1,7 +1,6 @@
 component-preview {
   > .group-variabled, > .variabled > .variabled-item, > .simple {
     padding: 0.5rem;
-    background: #f8f9fa;
     overflow: hidden;
     display: block;
     margin-bottom: 1rem;
@@ -9,7 +8,6 @@ component-preview {
 
     > .component-preview {
       padding: 0.5rem 1rem;
-      background: #fff;
       border-radius: 0.25rem;
     }
 
@@ -17,8 +15,7 @@ component-preview {
       margin-bottom: 0;
       
       > code {
-        padding: 0.5rem 1rem;
-        border-radius: 0.25rem;
+        padding: 1rem 1rem 0.5rem 1rem;
         margin-top: 1rem;
         margin-bottom: 0;
       }

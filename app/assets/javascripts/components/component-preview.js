@@ -16,9 +16,9 @@ $(document).ready(function(){
 
       if(this.querySelector('.simple') == null){
         this.innerHTML += `
-          <div class="simple">
+          <div class="simple border">
             <div class="component-preview"></div>
-            <pre><code class="component-code html"></code></pre>
+            <pre><code class="component-code html border-top"></code></pre>
           </div>
         `;
       }
@@ -36,7 +36,7 @@ $(document).ready(function(){
         variableSampleElm.className = 'variabled-item';
         variableSampleElm.innerHTML = `
             <div class="component-preview"></div>
-            <pre><code class="component-code html"></code></pre>
+            <pre><code class="component-code html border-top"></code></pre>
         `;
 
         var variabledSample = _template.replaceVariables({
@@ -52,9 +52,9 @@ $(document).ready(function(){
 
       if(this.querySelector('.variabled') == null){
         this.innerHTML += `
-          <div class="variabled">
+          <div class="variabled border">
             <div class="component-preview"></div>
-            <pre><code class="component-code html"></code></pre>
+            <pre><code class="component-code html border-top"></code></pre>
           </div>
         `;
       }
@@ -75,9 +75,9 @@ $(document).ready(function(){
 
       if(this.querySelector('.group-variabled') == null){
         this.innerHTML += `
-          <div class="group-variabled">
+          <div class="group-variabled border">
             <div class="component-preview"></div>
-            <pre><code class="component-code html"></code></pre>
+            <pre><code class="component-code html border-top"></code></pre>
           </div>
         `;
       }
