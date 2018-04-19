@@ -112,15 +112,22 @@
 
   <a data-toggle="collapse" data-target="#collapseEmbed" aria-expanded="true" aria-controls="collapseEmbed" class="h4 w-100 text-left btn p-0 font-weight-bold" href="collapseEmbed">Embed</a>
   <div class="collapse show" id="collapseEmbed">
-    <p class="small">Use this style on your own site via the following options:</p>
-    <%= f.input :cdn_url, as: :string,
+    <p class="small">Use this style on your own site by embedding this snippet on your site:</p>
+    <template>
+      <!-- View living styleguide: %{styleguide.url} -->
+      <link rel="stylesheet" media="all" href="%{styleguide.css_url}" />
+    </template>
+    <%= f.input :html_sample, as: :string,
       readonly: true, 
       label_html: { class: 'col-form-label-sm' },
       input_html: { name: nil, value: css_generator_url(id: resource.id), class: 'form-control-sm cdn-url select-on-clickable' } %>
 
-    <%= f.input :yarn_package, as: :string,
-      readonly: true,
-      label_html: { class: 'col-form-label-sm' },
-      input_html: { name: nil, value: "yarn add styleamatic #{css_generator_url(id: resource.id)}", class: 'form-control-sm yarn-package select-on-clickable' } %>
+    <%= f.input :scss_file, as: :block,
+      readonly: true, 
+      label_html: { class: 'col-form-label-sm' } do %>
+      <div>
+        <%= link_to 'Download SCSS', css_generator_url(id: resource.id, format: :scss), download: true %>
+      </div>
+    <% end %>
   </div>
 <% end %>

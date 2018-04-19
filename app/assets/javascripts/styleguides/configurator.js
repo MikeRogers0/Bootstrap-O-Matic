@@ -5,7 +5,6 @@ function updateCSSFromForm(){
   document.querySelector('styleguide-content').rebuildPreviews();
 
   $('.styleguide-configurator input.cdn-url').val(sourceUrl + '?' + sourceQuery);
-  $('.styleguide-configurator input.yarn-package').val('yarn add styleamatic ' + sourceUrl + '?' + sourceQuery);
 }
 
 var updateCSSTimeout = null;

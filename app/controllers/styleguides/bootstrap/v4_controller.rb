@@ -13,7 +13,7 @@ class Styleguides::Bootstrap::V4Controller < ApplicationController
   private
   helper_method :css_generator_url
   def css_generator_url(args={})
-    css_bootstrap_v4_url(args.merge(host: ENV['CSS_HOST'], format: :css))
+    css_bootstrap_v4_url({host: ENV['CSS_HOST'], format: :css}.merge(args))
   end
 
   helper_method :resource
