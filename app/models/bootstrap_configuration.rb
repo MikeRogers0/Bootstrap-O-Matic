@@ -1,4 +1,12 @@
 class BootstrapConfiguration < ApplicationRecord
+  validates :required_colours, presence: true
+  #validates :optional_colours, presence: true
+  validates :font_family_sans_serif, presence: true, hexcode: true
+  validates :font_family_monospace, presence: true, hexcode: true
+  validates :font_size_base, presence: true, numericality: { greater_than: 0, less_than: 5 }
+  validates :body_bg, presence: true, hexcode: true
+  validates :body_color, presence: true, hexcode: true
+
   def optional_colours_attributes=(values)
     self.optional_colours = values.collect do |id, value|
       value
