@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_18_144338) do
+ActiveRecord::Schema.define(version: 2018_04_19_135111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2018_04_18_144338) do
     t.decimal "font_size_base", precision: 10, scale: 6, default: "1.0"
     t.json "font_family_sans_serif"
     t.json "font_family_monospace"
+    t.string "body_bg", default: "#ffffff"
+    t.string "body_color", default: "#212529"
   end
 
 end
