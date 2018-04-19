@@ -1,10 +1,10 @@
 class BootstrapConfiguration < ApplicationRecord
-  validates :required_colours, presence: true
-  #validates :optional_colours, presence: true
+  validates :required_colours, presence: true, nested_colors: true
+  validates :optional_colours, nested_colors: true
   validates :font_family_sans_serif, presence: true
   validates :font_family_monospace, presence: true
   validates :font_size_base, presence: true, numericality: { greater_than: 0, less_than: 5 }
-  validates :body_bg, presence: true, hexcode: true
+  validates :body_bg, presence: true
   validates :body_color, presence: true, hexcode: true
 
   def optional_colours_attributes=(values)
@@ -16,7 +16,7 @@ class BootstrapConfiguration < ApplicationRecord
   end
 
   def optional_colours
-    @optional_colours ||= store_optional_colours.collect do |hash|
+    @optional_colours ||= (store_optional_colours || []).collect do |hash|
       Colour.new( hash['name'], hash['colour'] )
     end
   end
@@ -35,7 +35,7 @@ class BootstrapConfiguration < ApplicationRecord
   end
 
   def required_colours
-    @required_colours ||= store_required_colours.collect do |hash|
+    @required_colours ||= (store_required_colours || []).collect do |hash|
       Colour.new( hash['name'], hash['colour'] )
     end
   end
