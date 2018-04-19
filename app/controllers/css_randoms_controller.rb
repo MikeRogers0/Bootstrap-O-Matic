@@ -2,7 +2,7 @@ class CssRandomsController < ApplicationController
   layout 'landing'
 
   def create
-    raise "Welp, it's broke." unless resource.save
+    raise resource.styleguide.errors.inspect unless resource.save
     redirect_to styleguides_bootstrap_v4_path(id: resource.styleguide)
   end
 

@@ -1,8 +1,7 @@
 class Css::Bootstrap::V4Controller < ApplicationController
-  #before_action -> { respond_to :css, :scss }
-
   def show
     resource.attributes = resource_params
+    return resource.errors.inspect unless resource.valid?
 
     respond_to do |format|
       format.scss {}
@@ -20,7 +19,7 @@ class Css::Bootstrap::V4Controller < ApplicationController
       style: :compressed,
       compressed: true,
       filename: Rails.root.join('node_modules/bootstrap/scss/bootstrap.scss').to_s,
-      source_map_file: ".",
+      source_map_file: '.',
       source_map_embed: true,
       source_map_contents: true,
     }).render
