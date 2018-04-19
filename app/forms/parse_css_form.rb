@@ -21,8 +21,24 @@ class ParseCSSForm < ApplicationForm
       font_size_base: font_size_base,
       font_family_sans_serif: font_family_sans_serif.split(',').collect(&:strip).uniq,
       font_family_monospace: font_family_monospace.split(',').collect(&:strip).uniq,
+      body_bg: body_bg,
+      body_color: body_color
     }
     @styleguide.save
+  end
+
+  def body_bg
+    @parser.find_rule_sets(["body"]).each do |css|
+      return css['background-color'].gsub(';', '') if css['background-color'].present?
+    end
+    nil
+  end
+
+  def body_color
+    @parser.find_rule_sets(["body"]).each do |css|
+      return css['color'].gsub(';', '') if css['color'].present?
+    end
+    nil
   end
 
   def font_size_base
@@ -34,7 +50,7 @@ class ParseCSSForm < ApplicationForm
       return font_size.to_f if font_size.ends_with?('rem')
       return "#{( BigDecimal.new(font_size.to_i) / BigDecimal.new(16) ).round(2)}" if font_size.ends_with?('px')
     end
-    nil
+    '1'
   end
 
   def font_family_sans_serif
@@ -46,7 +62,7 @@ class ParseCSSForm < ApplicationForm
       css.expand_font_shorthand!
       return css['font-family'].gsub(';', '') if css['font-family'].present?
     end
-    nil
+    'sans-serif'
   end
 
   def font_family_monospace
@@ -58,7 +74,7 @@ class ParseCSSForm < ApplicationForm
       css.expand_font_shorthand!
       return css['font-family'].gsub(';', '') if css['font-family'].present?
     end
-    nil
+    'monospace'
   end
 
   def optional_colours

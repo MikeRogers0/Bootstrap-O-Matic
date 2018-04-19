@@ -2,7 +2,7 @@ class CssParsersController < ApplicationController
   layout 'landing'
 
   def create
-    return render :new unless resource.save
+    raise resource.styleguide.errors.inspect unless resource.save
     redirect_to styleguides_bootstrap_v4_path(id: resource.styleguide)
   end
 
