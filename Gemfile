@@ -48,9 +48,11 @@ gem 'valid_url'
 # Faraday - Used for API calls to Colormind
 gem 'faraday'
 
-
 # Parsing CSS
 gem 'css_parser', github: 'premailer/css_parser'
+
+# Track errors
+gem 'raygun4ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
