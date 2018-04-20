@@ -16,7 +16,7 @@ port        ENV.fetch("PORT") { 3000 }
 environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Enable early hints
-early_hints ENV["EARLY_HINTS"] { false } ? true : false
+early_hints ENV.fetch["EARLY_HINTS"] { false } ? true : false
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
