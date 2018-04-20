@@ -7,7 +7,7 @@ class NestedColorsValidator < ActiveModel::EachValidator
         return record.errors.add(attribute, I18n.t("activerecord.errors.models.#{record.model_name.i18n_key}.attributes.#{attribute}.name")) 
       end
 
-      if (color_hex.colour =~ /\#[0-9a-fA-F]{3,6}+/) != 0
+      if color_hex.colour != 'transparent' && (color_hex.colour =~ /\#[0-9a-fA-F]{3,6}+/) != 0
         return record.errors.add(attribute, I18n.t("activerecord.errors.models.#{record.model_name.i18n_key}.attributes.#{attribute}.hexcode")) 
       end
     end
