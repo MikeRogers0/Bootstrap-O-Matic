@@ -31,14 +31,14 @@ class ParseCSSForm < ApplicationForm
     @parser.find_rule_sets(["body"]).each do |css|
       return css['background-color'].gsub(';', '') if css['background-color'].present?
     end
-    nil
+    '#ffffff'
   end
 
   def body_color
     @parser.find_rule_sets(["body"]).each do |css|
       return css['color'].gsub(';', '') if css['color'].present?
     end
-    nil
+    '#212529'
   end
 
   def font_size_base
