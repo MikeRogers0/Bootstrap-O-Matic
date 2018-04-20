@@ -63,7 +63,7 @@ module BootstrapConfigurator
 
     #config.middleware.use Rack::Attack
     
-    config.force_ssl = true
+    #config.force_ssl = true
 
     config.action_dispatch.default_headers.merge!({
       'Content-Security-Policy' => ENV.fetch('CONTENT_SECURITY_POLICY') { '' },
