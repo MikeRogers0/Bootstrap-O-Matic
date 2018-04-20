@@ -35,6 +35,10 @@ function listenForConfiguratorChanges(selector){
 };
 
 $(document).on('turbolinks:load', function(){
+  if( $('.styleguide-configurator').length == 0 ) {
+    return;
+  }
+  
   listenForConfiguratorChanges( $('.styleguide-configurator') );
   buildEmbed(document.location.search.replace('?', ''));
 
