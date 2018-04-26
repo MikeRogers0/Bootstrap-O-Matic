@@ -49,7 +49,7 @@ gem 'valid_url'
 gem 'faraday'
 
 # Parsing CSS
-gem 'css_parser', github: 'premailer/css_parser'
+gem 'css_parser'
 
 # Track errors
 gem 'raygun4ruby'
