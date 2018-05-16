@@ -217,6 +217,7 @@ DEPENDENCIES
   i18n-debug
   jbuilder (~> 2.5)
   model_attribute
+  nokogiri
   pg
   puma (~> 3.7)
   rails (~> 5.2)
