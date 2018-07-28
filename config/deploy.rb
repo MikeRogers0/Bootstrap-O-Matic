@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
-set :application, "Styleguide-o-matic"
+set :application, "Bootstrap-O-Matic"
 set :repo_url, "git@github.com:MikeRogers0/Styleguide-o-matic.git"
 set :branch, ENV['BRANCH'] if ENV['BRANCH']
 
@@ -32,4 +32,4 @@ set :yarn_flags, '--production --silent --no-progress --ignore-engines'
 set :puma_conf, "#{shared_path}/config/puma.rb"
 
 # Nginx
-set :nginx_server_name, "style-guide-o-matic.adhoc-projects.mikerogers.io"
+set :nginx_server_name, "bootstrap-o-matic.mikerogers.io"
