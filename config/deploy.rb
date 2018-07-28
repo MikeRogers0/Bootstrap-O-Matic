@@ -23,7 +23,7 @@ append :linked_files, 'config/puma.rb', '.env'
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
-append :linked_dirs, '.bundle', 'node_modules', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'build'
+append :linked_dirs, '.bundle', 'node_modules', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
 
 # Yarn - Make sure it works with our version of node
 set :yarn_flags, '--production --silent --no-progress --ignore-engines'
