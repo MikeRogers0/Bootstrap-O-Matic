@@ -1,0 +1,41 @@
+/*
+ * Grabbed from: https://gist.github.com/levelsio/9c531122e557da6282458bbc2a8e2aff
+ * As mentioned https://twitter.com/levelsio/status/985879093135589376
+ */
+.levelsio-by {
+  display: flex;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: $zindex-fixed;
+  padding: $popover-body-padding-y $popover-body-padding-x;
+
+  border-top-left-radius: $border-radius;
+  border-top: $border-width solid $border-color;
+  border-left: $border-width solid $border-color;
+  background: $popover-bg;
+  color: $body-color;
+  text-decoration: none;
+  line-height: 110%;
+
+  @include box-shadow($popover-box-shadow);
+
+  &:hover {
+    color: $body-color;
+    text-decoration: none;
+
+    .maker {
+      color: theme-color("primary");
+    }
+  }
+  img {
+    border-radius: 100%;
+    width: $font-size-lg;
+    height: $font-size-lg;
+    margin-right: $popover-header-padding-x * 0.75;
+    margin-left: $popover-header-padding-x * 0.75;
+  }
+  span {
+    font-size: $font-size-sm;
+  }
+}
