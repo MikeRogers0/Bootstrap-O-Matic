@@ -2,7 +2,7 @@
 lock "~> 3.11.0"
 
 set :application, "Bootstrap-O-Matic"
-set :repo_url, "git@github.com:MikeRogers0/Styleguide-o-matic.git"
+set :repo_url, "git@github.com:MikeRogers0/Bootstrap-O-Matic.git"
 set :branch, ENV['BRANCH'] if ENV['BRANCH']
 
 # rbenv options
