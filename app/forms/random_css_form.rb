@@ -1,4 +1,4 @@
-class RandomCSSForm < ApplicationForm
+class RandomCssForm < ApplicationForm
   extend ModelAttribute
 
   def styleguide
@@ -24,7 +24,7 @@ class RandomCSSForm < ApplicationForm
   end
 
   def colormind
-    @colormind ||= Colormind::API.random_colours
+    @colormind ||= Colormind::Api.random_colours
   end
 
 end

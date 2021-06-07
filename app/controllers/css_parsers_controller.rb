@@ -9,7 +9,7 @@ class CssParsersController < ApplicationController
   private
   helper_method :resource
   def resource
-    @resource ||= ParseCSSForm.new(resource_params)
+    @resource ||= ParseCssForm.new(resource_params)
   end
 
   def resource_params

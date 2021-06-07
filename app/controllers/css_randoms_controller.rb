@@ -9,6 +9,6 @@ class CssRandomsController < ApplicationController
   private
   helper_method :resource
   def resource
-    @resource ||= RandomCSSForm.new()
+    @resource ||= RandomCssForm.new()
   end
 end

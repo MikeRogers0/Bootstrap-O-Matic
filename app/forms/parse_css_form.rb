@@ -1,4 +1,4 @@
-class ParseCSSForm < ApplicationForm
+class ParseCssForm < ApplicationForm
   extend ModelAttribute
 
   attribute :url, :string

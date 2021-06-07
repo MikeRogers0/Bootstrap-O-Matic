@@ -1,4 +1,4 @@
-class Colormind::API
+class Colormind::Api
   def self.random_colours
     response = api.post '/api/', '{"model":"default"}'
 
